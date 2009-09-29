@@ -1,0 +1,51 @@
+ActsAsPermission
+================
+
+This Rails plugin provides a list of permissions attached to a resource, according to ACL concept.  Permissions determine specific access rights for a resource depending of its controller actions such as: show, edit, update, destroy, evaluated from the given resource and such as: index, new, create, evaluated from the parent of the given resource.
+
+Each permission field attributed to a resource can be defined as true, false or nil.  When a resource permission is set as nil, the same permission is searched from its nearest relative to its parent farthest and the first given boolean value is returned.  If permission is nil for a resource and its potential parents, then the method returns false.
+
+
+Install
+=======
+
+To install as a plugin:
+
+  script/plugin install git://github.com/cyril/acts_as_permission.git
+
+Generate and apply the migration:
+
+  script/generate acts_as_permission model
+  rake db:migrate
+
+
+Example
+=======
+
+  script/generate acts_as_permission Category
+  script/generate acts_as_permission Article show edit update destroy
+  rake db:migrate
+
+  class Category < ActiveRecord::Base
+    acts_as_permission
+    belongs_to :user
+    has_many :articles
+  end
+
+  class Article < ActiveRecord::Base
+    acts_as_permission :category
+    belongs_to :category
+    belongs_to :user
+  end
+
+  # Check permission to list articles of the given category:
+  @category.has_permission?('index')
+
+  # Check permission to destroy the given article:
+  @article.has_permission?('destroy')
+
+  # Form helper that generate permissions fields for each article:
+  <%= permission_fields :article %>
+
+
+Copyright (c) 2009 Cyril Wack, released under the MIT license
