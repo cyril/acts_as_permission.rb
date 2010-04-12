@@ -1,2 +1,1 @@
-ActiveRecord::Base.send :include, ActiveRecord::Acts::Permission
-ActionController::Base.helper PermissionsHelper
+require 'acts_as_permission'
