@@ -1,0 +1,8 @@
+Description:
+    Copies the following files
+      - create_permissions.rb to db/migrate/
+      - permission.rb         to app/models/
+      - permissions_helper.rb to app/helpers/
+
+Usage:
+    `rails generate permissions`

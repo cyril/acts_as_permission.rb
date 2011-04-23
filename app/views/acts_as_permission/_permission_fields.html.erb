@@ -1,0 +1,35 @@
+<%= content_tag :fieldset, :id => "#{f.object}_permissions" do %>
+  <%= content_tag :legend, t('.legend') %>
+
+  <%= f.fields_for :permissions do |permission_fields| %>
+    <p>
+      <strong>
+      <%= permission_fields.object.route %>
+
+      <% if permission_fields.object.permitted.present? %>
+        ; <%= [ permission_fields.object.permitted.type,
+                permission_fields.object.permitted.id ].join('-') %>
+      <% end %>
+      </strong>
+    </p>
+
+    <p>
+      <label>
+        <%= permission_fields.radio_button(:value, true) %>
+        <%= t('.verb.allow') %>
+      </label>
+
+      <label>
+        <%= permission_fields.radio_button(:value, false) %>
+        <%= t('.verb.deny') %>
+      </label>
+
+      <br />
+
+      <label>
+        <%= t('.destroy') %>:
+        <%= permission_fields.check_box :_destroy %>
+      </label>
+    </p>
+  <% end %>
+<% end %>

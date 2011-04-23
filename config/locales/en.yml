@@ -1,0 +1,8 @@
+en:
+  acts_as_permission:
+    permission_fields:
+      legend: "Permissions"
+      verb:
+        allow: "allow"
+        deny: "deny"
+      destroy: "Delete"

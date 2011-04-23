@@ -1,0 +1,8 @@
+fr:
+  acts_as_permission:
+    permission_fields:
+      legend: "Permissions"
+      verb:
+        allow: "autoriser"
+        deny: "refuser"
+      destroy: "Supprimer"

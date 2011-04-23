@@ -1,0 +1,8 @@
+ja:
+  acts_as_permission:
+    permission_fields:
+      legend: "パーミッション"
+      verb:
+        allow: "許可する"
+        deny: "否定する"
+      destroy: "削除する"
