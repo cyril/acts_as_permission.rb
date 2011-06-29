@@ -24,23 +24,31 @@ Or it can be indirectly, through a parent resource.  Examples:
 
 Here is an example of query to a direct article's action:
 
-    @article = Article.find(params[:id])
-    @article.permission?("articles#destroy")          # => false
+``` ruby
+@article = Article.find(params[:id])
+@article.permission?("articles#destroy")          # => false
+```
 
 Same query, extended to a user:
 
-    @article.permission?("articles#destroy", @bob)    # => nil
-    @article.permission?("articles#destroy", @admin)  # => true
+``` ruby
+@article.permission?("articles#destroy", @bob)    # => nil
+@article.permission?("articles#destroy", @admin)  # => true
+```
 
 A query example on an indirect articles' action, through a category:
 
-    @category = Category.find(params[:category_id])
-    @category.permission?("articles#index")           # => true
+``` ruby
+@category = Category.find(params[:category_id])
+@category.permission?("articles#index")           # => true
+```
 
 Other examples, on unpermittable actions:
 
-    @category.permission?("articles#read")            # => nil
-    @category.permission?("silk_routes#index")        # => nil
+``` ruby
+@category.permission?("articles#read")            # => nil
+@category.permission?("silk_routes#index")        # => nil
+```
 
 The value of a permission depends on its context, which includes a route and an
 optional extension to a permitted resource.
@@ -63,7 +71,7 @@ Include the gem in your `Gemfile`:
 
     gem 'acts_as_permission'
 
-And run the +bundle+ command.  Or as a plugin:
+And run the `bundle` command.  Or as a plugin:
 
     rails plugin install git://github.com/cyril/acts_as_permission.git
 
