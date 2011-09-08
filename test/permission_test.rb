@@ -195,28 +195,35 @@ class PermissionTest < MiniTest::Unit::TestCase
     refute @blog.permission?("articles#new")
     assert_nil @blog.permission?("silk_routes#index")
     assert_equal 5, @blog.permissions.count
-    assert_empty @blog.permissions.delete_all
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     refute_empty @blog.create_default_permissions!
     assert_equal @blog.permissions.length, @blog.permissions.count
-    assert_empty @blog.permissions.delete_all
+    refute_empty @blog.permissions
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     assert_empty @blog.permissions
     refute_nil @blog.create_permission!("categories#create", false, @admin)
     assert_equal 1, @blog.permissions.count
     refute @blog.permission?(:"categories#create", @admin)
     assert_equal 1, @blog.permissions.count
-    assert_empty @blog.permissions.delete_all
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     assert @blog.permission("categories#create", @admin).
       update_attribute(:value, false)
     assert_equal 1, @blog.permissions.count
     refute @blog.permission?(:"categories#create", @admin)
     assert_equal 1, @blog.permissions.count
-    assert_empty @blog.permissions.delete_all
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     refute_nil @blog.create_permission!("categories#create", true, @admin)
     assert @blog.permission?(:"categories#create", @admin)
-    assert_empty @blog.permissions.delete_all
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     refute_nil @blog.create_permission!("categories#create", true, @admin)
     assert @blog.permission?(:"categories#create", @admin)
-    assert_empty @blog.permissions.delete_all
+    @blog.permissions.delete_all
+    assert_empty @blog.permissions
     refute_nil @blog.create_permission!("categories#create", true, @bob)
     refute Blog.first.permissions.empty?
     assert_equal @blog.permissions.length, @blog.permissions.count
@@ -246,7 +253,8 @@ class PermissionTest < MiniTest::Unit::TestCase
     assert @category.permission?("articles#create", @bob)
     assert_nil @category.permission?("articles#show", @bob)
     assert_equal 5, @category.permissions.count
-    assert_empty @category.permissions.delete_all
+    @category.permissions.delete_all
+    assert_empty @category.permissions
     assert_nil @category.permission?("articles#create", @bob)
     refute_nil @category.create_permission!("articles#create", true, @bob)
     assert @category.permission?("articles#create", @bob)
@@ -274,7 +282,8 @@ class PermissionTest < MiniTest::Unit::TestCase
     refute @article.permission?('comments#new', @spammer)
     refute @article.permission?('comments#create', @spammer)
     assert_equal 5, @article.permissions.count
-    assert_empty @article.permissions.delete_all
+    @article.permissions.delete_all
+    assert_empty @article.permissions
     assert_equal 0, @article.permissions.count
     assert @article.permission?('comments#new')
     assert_equal @article.permissions.count, @article.permissions.length
@@ -318,7 +327,8 @@ class PermissionTest < MiniTest::Unit::TestCase
     assert_equal 1, @comment1.permissions.count
     refute @comment1.permission?(:"comments#show")
     assert_equal 1, @comment1.permissions.count
-    assert_empty @comment1.permissions.delete_all
+    @comment1.permissions.delete_all
+    assert_empty @comment1.permissions
     assert @comment1.permission?(:"comments#show")
     assert_equal 1, @comment1.permissions.count
     refute_nil @comment1.permission("comments#show").

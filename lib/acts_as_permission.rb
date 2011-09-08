@@ -44,10 +44,6 @@ module ActsAsPermission
       permissions.compact
     end
 
-    def mass_assignment_authorizer
-      super + [:permissions_attributes]
-    end
-
     def has_permission?(action)
       ActiveSupport::Deprecation.warn 'has_permission?(action) is deprecated ' +
         'and may be removed from future releases, use permission?(route, ext ' +
@@ -119,6 +115,7 @@ class ActiveRecord::Base
 
     has_many :permissions, :as => :permittable, :dependent => :destroy
     accepts_nested_attributes_for :permissions, :allow_destroy => true
+    attr_accessible :permissions_attributes
     validates_associated :permissions
 
     class << self
