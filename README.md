@@ -1,4 +1,4 @@
-Acts as permission
+Acts as permission ![travis-ci](https://secure.travis-ci.org/cyril/acts_as_permission.png)
 ==================
 
 Acts as permission is a plugin for Ruby on Rails that allows to assign a list of
