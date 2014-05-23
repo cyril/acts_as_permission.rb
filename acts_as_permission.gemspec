@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Cyril Wack"]
   s.email       = ["contact@cyril.io"]
-  s.homepage    = "http://github.com/cyril/acts_as_permission"
+  s.homepage    = "https://github.com/cyril/acts_as_permission.rb"
   s.summary     = %q{Simple permission solution for Rails.}
   s.description = %q{Simple Rails plugin to assign a list of permissions on a resource.}
 
