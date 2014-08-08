@@ -1,5 +1,10 @@
-Acts as permission ![travis-ci](https://secure.travis-ci.org/cyril/acts_as_permission.png)
-==================
+# Acts as permission
+
+* * *
+
+**This gem is outdated.  Please do not use it.**
+
+* * *
 
 Acts as permission is a plugin for Ruby on Rails that allows to assign a list of
 permissions on an object, according to the ACL concept, where each permission
@@ -59,13 +64,17 @@ The `permission?(route, ext = nil)` query may return, depending on the context:
 *   `false`, if the permission is denied;
 *   `nil`, if the permission is indefinable (resulting of the unknown context).
 
-Philosophy
-----------
+## Status
+
+[![Gem Version](https://badge.fury.io/rb/acts_as_permission.png)](http://badge.fury.io/rb/acts_as_permission)
+[![Build Status](https://api.travis-ci.org/cyril/acts_as_permission.rb.png?branch=master)](http://travis-ci.org/cyril/acts_as_permission?branch=master)
+![](https://ruby-gem-downloads-badge.herokuapp.com/acts_as_permission?type=total)
+
+## Philosophy
 
 General library that does only one thing, without any feature.
 
-Installation
-------------
+## Installation
 
 Include the gem in your `Gemfile`:
 
@@ -80,8 +89,7 @@ Then, generate files and apply the migration:
     rails generate permissions
     rake db:migrate
 
-Getting started
----------------
+## Getting started
 
 ### Configuring models
 
