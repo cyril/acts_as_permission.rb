@@ -2,7 +2,7 @@
 
 * * *
 
-**This gem is outdated.  Please do not use it.**
+:warning: **This gem is outdated.  Please do not use it.**
 
 * * *
 
